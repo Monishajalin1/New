@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Posts list {% endblock %}
+{% block style %} {% endblock %}
+
+{% block body %}
+   <div class="container mt-3">
+    <h3>Details of {{post_details.post_title}}</h3><br/>
+    <img width="200" src="{% url 'home_path' %}media/{{post_details.post_image}}"><br/><br/>
+     <h5>{{post_details.post_description}}</h5>
+     <h6 class="text-primary">
+       Posted by {{post_details.post_author}} on {{post_details.post_published_datetime}}</h6>
+     <a href ="{% url 'home_path' %}><button type="button" class="bn btn-success">
+      back to List</button></a><br/><br/>
+   </div>
+{% endblock %}

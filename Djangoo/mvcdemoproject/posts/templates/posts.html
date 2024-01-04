@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block body %}
+   <span class="badge text-bg-info"><h1>Posts List</h1></span>
+   <br><br>
+{% if searchTerm %}
+   <h2>Searching for:{{searchTerm}}</h2>
+{% endif %}
+   <table>
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Author</th>
+            <th>Actions</th>
+        </tr>
+        {% for post in posts_list %}
+        <tr>
+            <td> <img src="media/{{post.post_image}}" width="25%" height="25%"></td>
+            <td>{{post.post_title}}</td>
+            <td>{{post.post_published_date_time}}</td>
+            <td>posted by {{post.post_author}}</td>
+            <td><a href="{% url 'home_path' %}post/{{post.id}}">
+            <button type="button" class="btn btn-success">View post</button></a></td>
+            <td><a href="{% url 'edit_post' post.id %}">
+                <button type="button" class="btn bin-primary">Edit</button></a></td>
+             <td><a href="{% url 'delete_post' post.id %}">
+                <button type="button" class="btn btn-danger">Delete</button></a></td>
+
+        </tr>
+       {% endfor %}
+    </table>
+{% endblock %}
